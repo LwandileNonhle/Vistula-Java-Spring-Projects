@@ -24,7 +24,7 @@ public class ProductController {
         ProductResponse productResponse = productService.create(productRequest);
         return new ResponseEntity<>(productResponse, HttpStatus.CREATED);
     }
-    // ... existing create method ...
+
 
     @GetMapping("/{id}")
     @Operation(summary = "Find product by id")
