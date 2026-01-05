@@ -109,6 +109,19 @@ Result: Product is deleted with status 204 No Content
 Screenshot – Delete Product: ![Delete Product](screenshots/delete-product.png)
 
 
+**Summary of Endpoints**
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/products` | Create a new product |
+| `GET` | `/api/v1/products/{id}` | Get product by ID |
+| `GET` | `/api/v1/products` | Get all products |
+| `PUT` | `/api/v1/products/{id}` | Update a product |
+| `DELETE` | `/api/v1/products/{id}` | Delete a product |
+
+---
+
+
 
 
 **Database (H2)**
