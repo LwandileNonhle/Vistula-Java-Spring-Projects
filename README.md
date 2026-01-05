@@ -1,14 +1,13 @@
-**Spring Framework Projects - Java & Spring Boot**
+**Task 2 – Spring Boot REST API**
 
 **Project Overview**
-This repository contains two Java applications built using the Spring Framework as part of the Vistula University curriculum.
 
-Task 1 – Basic Spring Boot application with controller and view
-Task 2 – REST API application with CRUD operations, Swagger, exception handling, and database support
+This project is Task 2 of the Spring Framework assignment.
+It is a REST API backend application that supports full CRUD operations for managing products.
 
 **Technologies Used**:
 
-* Java 
+* Java
 * Spring Boot
 * Spring Web
 * Spring Data JPA
@@ -17,50 +16,9 @@ Task 2 – REST API application with CRUD operations, Swagger, exception handlin
 * Maven
 
 
-Task 1 – Spring Boot MVC Application
-Description
-
-Task 1 is a simple Spring Boot application that demonstrates:
-
-* creating a Spring project from scratch,
-* using a controller
-* handling HTTP GET requests
-* returning text and HTML views.
-
-**How It Works**
-
-* The application runs on localhost:8080
-* A controller handles browser requests
-* One endpoint returns a simple text response
-* Another endpoint returns an HTML page using Thymeleaf
-
-**How to Run**
-
-Open the project in IntelliJ
-Run the main Spring Boot class
-Open your browser and go to:
- http://localhost:8080
-
-**Screenshots – Task 1**
-
-Application started successfully (console output): ![Task 1 Console](screenshots/task1-console.png)
-
-GET request result in browser:
-
-HTML / Thymeleaf view rendered: ![Task 1 HTML View](screenshots/task1-html-view.png)
-
-
-TASK 2 – REST API Application
-Description
-
-Task 2 is a REST API backend application that manages products.
-It supports full CRUD operations and follows a layered architecture.
-
-Application Startup
+**Application Startup**
 
 Spring Boot application running successfully:
-
-
 
 API Documentation (Swagger)
 
@@ -70,12 +28,13 @@ Swagger UI:
 
 http://localhost:8080/swagger-ui/index.html
 
-Swagger UI showing available endpoints:
+Swagger UI showing available endpoints: ![Swagger UI](screenshots/swagger-ui.png)
 
 
 
-REST API Endpoints
-Create Product (POST)
+
+**REST API Endpoints**
+:Create Product (POST)
 
 Endpoint:
 
@@ -84,7 +43,7 @@ POST /api/v1/products
 Example Request Body:
 
 {
-"name": "Laptop"
+"name": "Vistula Laptop"
 }
 
 Result: Product is created with status 201 Created
@@ -94,7 +53,7 @@ Screenshot – Create Product: ![Create Product](screenshots/post-create-product
 
 
 
-Get Product by ID (GET)
+**Get Product by ID (GET)**
 
 Endpoint:
 
@@ -107,7 +66,7 @@ Screenshot – Get Product by ID: ![Get Product by ID](screenshots/get-product-b
 
 
 
-Get All Products (GET)
+**Get All Products (GET)**
 
 Endpoint:
 
@@ -120,7 +79,7 @@ Screenshot – Get All Products: ![Get All Products](screenshots/get-all-product
 
 
 
-Update Product (PUT)
+**Update Product (PUT)**
 
 Endpoint:
 
@@ -129,7 +88,7 @@ PUT /api/v1/products/{id}
 Example Request Body:
 
 {
-"name": "Updated Laptop"
+"name": "Update Application Name"
 }
 
 Result: Product is updated successfully
@@ -139,7 +98,7 @@ Screenshot – Update Product: ![Update Product](screenshots/put-update-product.
 
 
 
-Delete Product (DELETE)
+**Delete Product (DELETE)**
 
 Endpoint:
 
@@ -152,7 +111,7 @@ Screenshot – Delete Product: ![Delete Product](screenshots/delete-product.png)
 
 
 
-Database (H2)
+**Database (H2)**
 
 The application uses an H2 in-memory database.
 
@@ -186,11 +145,55 @@ Result: Returns 404 Not Found with error message
 Screenshot – Product Not Found: ![Product Not Found](screenshots/product-not-found.png)
 
 
-
+The project follows a layered architecture:
 
 **Project Structure**
 
-The project follows a layered architecture:
+## Project Structure
+```text
+First_Rest_Api_Spring
+├── src
+│ ├── main
+│ │ ├── java
+│ │ │ └── pl
+│ │ │ └── edu
+│ │ │ └── vistula
+│ │ │ └── first_rest_api_spring
+│ │ │ ├── FirstRestApiSpringApplication
+│ │ │ │
+│ │ │ └── product
+│ │ │ ├── api
+│ │ │ │ ├── request
+│ │ │ │ ├── response
+│ │ │ │ ├── ProductController
+│ │ │ │ └── ProductExceptionHandler
+│ │ │ │
+│ │ │ ├── domain
+│ │ │ │ └── Product
+│ │ │ │
+│ │ │ ├── repository
+│ │ │ │ └── ProductRepository
+│ │ │ │
+│ │ │ ├── service
+│ │ │ │ └── ProductService
+│ │ │ │
+│ │ │ └── support
+│ │ │ ├── Exception
+│ │ │ ├── ProductExceptionSupplier
+│ │ │ └── ProductMapper
+│ │ │
+│ │ └── resources
+│ │
+│ └── test
+│
+├── screenshots
+├── .gitignore
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+```
 
 Controller – handles HTTP requests
 
@@ -201,3 +204,9 @@ Repository – database access
 Domain – entity classes
 
 Support – mappers and exception handling
+
+**TASK2G ANSWER**
+
+By extending JpaRepository<Product, Long>, my ProductRepository interface inherits a robust set of standard CRUD methods, such as save(), findById(), and deleteById(). This is made possible through the parameters defined in the Generics, where <Product, Long> explicitly informs Spring Data JPA to manage the Product entity and recognize its primary key as a Long type. 
+
+At runtime, Spring scans for the @Repository annotation and utilizes dynamic proxying to automatically create a concrete implementation class. This proxy class handles the underlying complexity of SQL generation and direct communication with my H2 database, ensuring the application remains functional even though my developer-written interface remains empty
